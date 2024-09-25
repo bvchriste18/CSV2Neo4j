@@ -1,7 +1,7 @@
 # CSV2Neo4j
-This is an example project to describe how to load a csv file (merge_split.csv) created from [ASSET](https://doi.org/10.1016/j.compfluid.2023.105808) into a graph database on Neo4j desktop.
+This is an example project to describe how to load a csv file (merge_split.csv) created from [ASSET](https://doi.org/10.1016/j.compfluid.2023.105808) into a graph database on Neo4j desktop. The output is a neo4j graph database with droplets labelled by breakup stage and connected by splits and merges. 
 
-# Setup/Running the Script
+## Setup/Running the Script
 First, you need to install the desktop version of Neo4j. Found [here](https://neo4j.com/download/?utm_source=Google&utm_medium=PaidSearch&utm_campaign=Evergreen&utm_content=AMS-Search-SEMCE-DSA-None-SEM-SEM-NonABM&utm_term=&utm_adgroup=pmax&gad_source=1&gclid=CjwKCAjw6c63BhAiEiwAF0EH1Ay5vc5tWtd01RVUDIpBCwSmwvaxg_XNPzxMZyQy3cMirWZHrMQROBoCo38QAvD_BwE).
 
 When the desktop app is installed, create a new project:
@@ -28,7 +28,7 @@ Now, start the DBMS:
 
 Finally, adjust the names/parameters in the python script "import.py" and run the script.
 
-# Additional Notes
+## Additional Notes
 
 Sometimes these csv files (like the one included here as an example) are large. You might run into the error:
 
@@ -41,3 +41,12 @@ If you do, you need to locate the neo4j.conf file, which you can find the same w
 
 Change dbms.memory.heap.max_size=1G to 4G (Note: you may need to adjust these depending on your system). 
 
+
+If you want to output a csv file from the newly labelled data, you have to first create an 'apoc.conf' file in the dbms configuration folder and in that file, write:
+```bash
+apoc.export.file.enabled=true
+```
+Then, the command can be typed into the cypher command line as:
+```bash
+CALL apoc.export.csv.all("filename.csv", {})
+```
