@@ -35,16 +35,13 @@ To see if the script executed properly, open the neo4j browser (the blue "open" 
 
 ## Additional Notes
 
-Sometimes these csv files (like the one included here as an example) are large. You might run into the error:
+Sometimes these csv files (like the one included here as an example) are large. You might run into the error: ```The memory pool limit was exceeded.```
 
-```bash
-The memory pool limit was exceeded.
-```
 If you do, you need to locate the neo4j.conf file, which you can find the same way you found the import folder, but navigate to the configuration folder. Open neo4j.conf and scroll to the bottom. You should see the following:
 
 ![image](https://github.com/user-attachments/assets/201ad27d-03f9-42ee-983f-f096d43f3178)
 
-Change dbms.memory.heap.max_size=1G to 4G (Note: you may need to adjust these depending on your system). 
+Change ```dbms.memory.heap.max_size=1G``` to 4G (Note: you may need to adjust these depending on your system). 
 
 
 If you want to output a csv file from the newly labelled data, you have to first create an 'apoc.conf' file in the dbms configuration folder and in that file, write:
