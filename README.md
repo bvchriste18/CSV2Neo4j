@@ -28,6 +28,11 @@ Now, start the DBMS:
 
 Finally, adjust the names/parameters in the python script "import.py" and run the script.
 
+To see if the script executed properly, open the neo4j browser (the blue "open" button) and you should see this on the left-hand side:
+
+![image](https://github.com/user-attachments/assets/bd584fd2-b1cb-4b53-b63a-41616cedb94d)
+
+
 ## Additional Notes
 
 Sometimes these csv files (like the one included here as an example) are large. You might run into the error:
