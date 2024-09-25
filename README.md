@@ -28,14 +28,20 @@ Now, start the DBMS:
 
 Finally, adjust the names/parameters in the python script "import.py" and run the script.
 
-To see if the script executed properly, open the neo4j browser (the blue "open" button) and you should see this on the left-hand side:
+To see if the script executed properly, open the neo4j browser (the blue "open" button) and you should see something like this on the left-hand side:
 
-![image](https://github.com/user-attachments/assets/bd584fd2-b1cb-4b53-b63a-41616cedb94d)
+![image](https://github.com/user-attachments/assets/72856f4b-cc91-4796-90ea-ad10a165e655)
 
+**Note:** If anything goes wrong while the script is running, you should run
+```
+match(n)
+detach delete n
+```
+to delete any data already read in before attempting to load the csv again. 
 
 ## Additional Notes
 
-Sometimes these csv files (like the one included here as an example) are large. You might run into the error: ```The memory pool limit was exceeded.```
+Sometimes these csv files are large. You might run into the error: ```The memory pool limit was exceeded.```
 
 If you do, you need to locate the neo4j.conf file, which you can find the same way you found the import folder, but navigate to the configuration folder. Open neo4j.conf and scroll to the bottom. You should see the following:
 
