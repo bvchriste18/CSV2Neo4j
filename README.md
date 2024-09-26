@@ -39,6 +39,10 @@ detach delete n
 ```
 to delete any data already read in before attempting to load the csv again. 
 
+## Other analysis scripts
+
+The neo4j python API allows for parsing and gathering data directly from the graph database. The example "weber_calc.py" shows how you can run queries in the python script to accomplish this. This script looks for two sets of data, one, droplets that breakup further and the other droplets that do not break up further in the simulation, it then calculates the weber number from gas and liquid velocities extracted using ASSET.
+
 ## Additional Notes
 
 Sometimes these csv files are large. You might run into the error: ```The memory pool limit was exceeded.```
