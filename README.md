@@ -1,6 +1,8 @@
 # CSV2Neo4j
 This is an example project to describe how to load a csv file (merge_split.csv) created from [ASSET](https://doi.org/10.1016/j.compfluid.2023.105808) into a graph database on Neo4j desktop. The output is a neo4j graph database with droplets labelled by breakup stage and connected by splits and merges. 
 
+Note: If you are using csv files from NGA2, use the scripts in the NGA2 directory.
+
 ## Setup/Running the Script
 First, you need to install the desktop version of Neo4j. Found [here](https://neo4j.com/download/?utm_source=Google&utm_medium=PaidSearch&utm_campaign=Evergreen&utm_content=AMS-Search-SEMCE-DSA-None-SEM-SEM-NonABM&utm_term=&utm_adgroup=pmax&gad_source=1&gclid=CjwKCAjw6c63BhAiEiwAF0EH1Ay5vc5tWtd01RVUDIpBCwSmwvaxg_XNPzxMZyQy3cMirWZHrMQROBoCo38QAvD_BwE).
 
