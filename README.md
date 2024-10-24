@@ -34,10 +34,19 @@ To see if the script executed properly, open the neo4j browser (the blue "open" 
 
 ![image](https://github.com/user-attachments/assets/72856f4b-cc91-4796-90ea-ad10a165e655)
 
+If you are running with NGA2 outputs, it might look slightly different now. You will likely see labels: droplet, core, and primary.
+
 **Note:** If anything goes wrong while the script is running, you should run
 ```
 match(n)
 detach delete n
+```
+or if the database is very large, run this: 
+```
+call apoc.periodic.iterate(
+    "MATCH (m) RETURN m", 
+    "DETACH DELETE m",
+    {batchSize:10000,parallel:false})
 ```
 to delete any data already read in before attempting to load the csv again. 
 
@@ -47,6 +56,8 @@ The neo4j python API allows for parsing and gathering data directly from the gra
 
 ## Notes for NGA2
 The workflow for csv files derived from NGA2 is mostly the same. The only difference is that csv files from NGA2 must be formatted first to remove excess spaces. This can be done with the clean_csv.py script before uploading the csv file into the import directory. 
+
+Update 10/24/24: clean_csv.py separates rows with EventType = Merge so that there is a separate row for each OldID. This fixes an inefficiency in Neo4j which involves searching through lists within nodes. Now, every node created should have only one OldID, so the import script will run orders of magnitude faster. The downside is that OldIDs are not correctly stored in the node after relationships are created, so the only way to gain that information back is to look at the merge relationships connected to that node. This process still needs some optimizing. 
 
 ## Additional Notes
 
